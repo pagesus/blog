@@ -23,7 +23,7 @@
     <meta name="description" content="Think twice, code once.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wayne&#39;s Blog">
-<meta property="og:url" content="https://pagesus.github.io/blog/index.html">
+<meta property="og:url" content="https://pagesus.github.io/index.html">
 <meta property="og:site_name" content="Wayne&#39;s Blog">
 <meta property="og:description" content="Think twice, code once.">
 <meta property="og:locale" content="zh_CN">
@@ -31,7 +31,7 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://pagesus.github.io/blog/">
+<link rel="canonical" href="https://pagesus.github.io/">
 
 
 
@@ -173,7 +173,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pagesus.github.io/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/">
+    <link itemprop="mainEntityOfPage" href="https://pagesus.github.io/2022/10/07/Using-Hexo-and-github-to-build-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.jpg">
@@ -203,7 +203,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-10-07 15:59:39 / 修改时间：21:34:45" itemprop="dateCreated datePublished" datetime="2022-10-07T15:59:39+08:00">2022-10-07</time>
+      <time title="创建时间：2022-10-07 15:59:39 / 修改时间：21:49:13" itemprop="dateCreated datePublished" datetime="2022-10-07T15:59:39+08:00">2022-10-07</time>
     </span>
 
   
@@ -232,7 +232,7 @@
 <p>本地运行Hexo</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面三条命令是常用的Hexo 命令</span></span><br><span class="line">hexo clean <span class="comment"># 清空已有hexo网站文件</span></span><br><span class="line">hexo generate(or g) <span class="comment"># 依据网页文本与新的CSS样式生成新网站文件</span></span><br><span class="line">hexo server(or s) <span class="comment"># 启动本地服务器，可以在localhost:4000查看网站修改效果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#运行以下命令</span></span><br><span class="line">$ hexo clean; hexo g; hexo s</span><br><span class="line">...</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
 <p>访问本地<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 可以看到以下默认Hexo内容</p>
-<p><img src="/blog/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/Hexo_Default.JPG"></p>
+<p><img src="/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/Hexo_Default.JPG"></p>
 <p>以上就完成了本地的Hexo环境的部署</p>
 <h2 id="三、-Deploy到Github上"><a href="#三、-Deploy到Github上" class="headerlink" title="三、 Deploy到Github上"></a>三、 Deploy到Github上</h2><p>本来考虑到访问速度是想Deplotgitee上，没想到发布gitpage竟然还好审核，更为离谱的是一审核还过了一个星期然后通知我上传图片不清晰（自己限制了图片上传大小2MB），兼职拉闸。想想还是直接部署到Github上好了。github的不是也没有那么复杂，首先github上创建一个Repository，并且开启gitpage服务<a target="_blank" rel="noopener" href="https://docs.github.com/cn/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">3</a>,然后配置Hexo根目录的下的_config.yml</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:xxxx/xxxxx.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  以上的repo填自己实际的repo就OK</span><br></pre></td></tr></table></figure>
@@ -275,7 +275,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pagesus.github.io/blog/2022/09/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://pagesus.github.io/2022/09/17/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/avatar.jpg">
