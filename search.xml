@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>github上使用Hexo搭建个人博客</title>
+    <url>/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/</url>
+    <content><![CDATA[<h2 id="一、-安装Node-js"><a href="#一、-安装Node-js" class="headerlink" title="一、 安装Node.js"></a>一、 安装Node.js</h2><ul>
+<li>安装Node.js<br>在node官网 <a href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a> 下载最新维护版本的node即可，由于本人的老爷机还只能跑跑Win7-64bit的系统，所以只能下载Latest支持Win7的Node.js版本(<a href="https://nodejs.org/download/release/v13.14.0/">https://nodejs.org/download/release/v13.14.0/</a>), Windows上按照wizard指引一路安装过去就OK了。安装完之后（并且安装过程中默认将node添加到环境变量），打开powersell，查看node版本号得到以下回显即表示Node.js安装OK。<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Administrator@<span class="token environment constant">USER</span>-20190806PD MINGW64 /e/Git_Trunk/My_Blog
+$ <span class="token function">node</span> <span class="token parameter variable">-v</span>
+v13.14.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+由于npm仓库镜像源下载速度较慢，配置国内源<a href="https://blog.csdn.net/cungudafa/article/details/98739459">1</a><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#配置淘宝源</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> cnpm <span class="token parameter variable">--registry</span><span class="token operator">=</span>https://registry.npm.taobao.org
+
+<span class="token comment">#查看是否安装成功</span>
+cnpm <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h2 id="二、安装Hexo"><a href="#二、安装Hexo" class="headerlink" title="二、安装Hexo"></a>二、安装Hexo</h2><p>其实前面一节埋了一个小坑，在使用以下命令安装Hexo的时候会报错</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cnpm <span class="token function">install</span> hexo-cli <span class="token parameter variable">-g</span>
+internal/modules/cjs/loader.js:965
+  throw err<span class="token punctuation">;</span>
+  ^
+
+Error: Cannot <span class="token function">find</span> module <span class="token string">'fs/promises'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>主要原因是由于安装的cnpm的版本比npm的版本高（npm的版本是由于我这里用的Win7的系统导致的使用了历史版本的node）<br>使用以下命令重新安装较低版本cnpm即可解决以上问题<a href="https://blog.csdn.net/qq_34617629/article/details/126059653">2</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#删除已安装的cnpm版本：</span>
+<span class="token function">npm</span> uninstall <span class="token parameter variable">-g</span> cnpm
+<span class="token comment">#安装低版本cnpm：</span>
+<span class="token function">npm</span> <span class="token function">install</span> cnpm@7.1.0 <span class="token parameter variable">-g</span> <span class="token parameter variable">--registry</span><span class="token operator">=</span>https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新使用以下命令安装Hexo</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cnpm <span class="token function">install</span> hexo-cli <span class="token parameter variable">-g</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span>
+All packages installed <span class="token punctuation">(</span><span class="token number">58</span> packages installed from <span class="token function">npm</span> registry, used 3s<span class="token punctuation">(</span>network 3s<span class="token punctuation">)</span>, speed <span class="token number">783</span>.79KB/s, json <span class="token number">58</span><span class="token punctuation">(</span><span class="token number">295</span>.98KB<span class="token punctuation">)</span>, tarball <span class="token number">1</span>.75MB, manifests cache hit <span class="token number">0</span>, etag hit <span class="token number">0</span> / miss <span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>初始化Hexo</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">$ hexo init
+INFO  Cloning hexo-starter https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo-starter.git
+INFO  Install dependencies
+added 246 packages from 200 contributors in 42.808s
+
+19 packages are looking for funding
+  run &#96;npm fund&#96; for details
+
+INFO  Start blogging with Hexo!
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>本地运行Hexo</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">#下面三条命令是常用的Hexo 命令
+hexo clean # 清空已有hexo网站文件
+hexo generate(or g) # 依据网页文本与新的CSS样式生成新网站文件
+hexo server(or s) # 启动本地服务器，可以在localhost:4000查看网站修改效果
+
+#运行以下命令
+$ hexo clean; hexo g; hexo s
+...
+INFO  Hexo is running at http:&#x2F;&#x2F;localhost:4000&#x2F; . Press Ctrl+C to stop.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>访问本地<a href="http://localhost:4000/">http://localhost:4000/</a> 可以看到以下默认Hexo内容</p>
+<p><img src="/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/Hexo_Default.JPG"></p>
+<p>以上就完成了本地的Hexo环境的部署</p>
+<h2 id="三、-Deploy到Github上"><a href="#三、-Deploy到Github上" class="headerlink" title="三、 Deploy到Github上"></a>三、 Deploy到Github上</h2><p>本来考虑到访问速度是想Deplotgitee上，没想到发布gitpage竟然还好审核，更为离谱的是一审核还过了一个星期然后通知我上传图片不清晰（自己限制了图片上传大小2MB），兼职拉闸。想想还是直接部署到Github上好了。github的不是也没有那么复杂，首先github上创建一个Repository，并且开启gitpage服务<a href="https://docs.github.com/cn/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">3</a>,然后配置Hexo根目录的下的_config.yml</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash"># Deployment
+## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment
+deploy:
+  type: git
+  repo: git@github.com:xxxx&#x2F;xxxxx.github.io.git
+  branch: master
+  以上的repo填自己实际的repo就OK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后本地执行下面命令就可以将本地代码push到github上了</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">hexo g --d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>详细步骤可参考<a href="https://blog.csdn.net/cungudafa/article/details/104260494">4</a>中的三、码云配置，此处只需要将上传到gitee的地址改成上传到github的地址即可。</p>
+<p>此处遇到一个问题就是部署的页面无法加载theme主题，原因是由于未配置_config.yml中合法的以下内容</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">## Set your site url here. For example, if you use GitHub Page, set url as &#39;https:&#x2F;&#x2F;username.github.io&#x2F;project&#39;
+#此处必须按照以下类似格式进行拆分
+url: https:&#x2F;&#x2F;username.github.io&#x2F;
+root: &#x2F;project&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可参考文档<a href="https://blog.csdn.net/weixin_44146294/article/details/105474918">5</a>进行设置，此处一定要按照文档<a href="https://blog.csdn.net/weixin_44146294/article/details/105474918">5</a>中同时设置url和root，否则后续会遇到链接图片不对的问题（导致图片挂掉无法正常显示），hexo根目录的_config.yml的配置可参考以下链接 <a href="https://hexo.io/zh-cn/docs/configuration.html">https://hexo.io/zh-cn/docs/configuration.html</a> </p>
+<p>Pend<br>hexo博客中插入图片失败——解决思路及个人最终解决办法<br><a href="https://blog.csdn.net/m0_43401436/article/details/107191688">https://blog.csdn.net/m0_43401436/article/details/107191688</a></p>
+]]></content>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+</search>
