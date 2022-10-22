@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Operating Systems: Three Easy Pieces</title>
+    <url>/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/</url>
+    <content><![CDATA[<p><img src="/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/website.JPG" alt="web"><br>本文将推荐一本关于OS的好书，笔者读完这本书后对OS当中的一些基本概念有了更深的认识！下面将罗列一些相关的学习资源</p>
+<span id="more"></span>
+
+<p>Operating Systems: Three Easy Pieces是WI的教授Remzi等人的介绍关于OS的教程，按照三大部分：虚拟化（CPU和内存的抽象）、并发性（多线程并发）、持久性（I&#x2F;O及文件系统）对整个OS进行了概述。</p>
+<p>然后这本书的电子资源是免费的，当然肯定是英文版的。有没有中文版的呢，有也是有的，但是部分翻译比较感人，只能说是凑活着看，如果读到不太对劲的地方，不要怀疑肯定是翻译错了，直接去翻英文原文的好了；还有一点，译文并不包含最新的内容，这部分还得自己去扒英文。下面一并附上homework的链接：</p>
+<p>官网链接：<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org">https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org</a></p>
+<p>中文译文链接：<a href="https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese%E3%80%82">https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese。</a></p>
+<p>homework链接：<a href="https://github.com/remzi-arpacidusseau/ostep-homework">https://github.com/remzi-arpacidusseau/ostep-homework</a></p>
+<p>最后，这是一本好书，Enjoy it😉！</p>
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Hexo+github pages搭建个人博客</title>
     <url>/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/</url>
     <content><![CDATA[<p><img src="/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/Blog_page.JPG"><br>使用Hexo在github pages服务上搭建简单个人博客</p>
@@ -77,6 +97,9 @@ root: &#x2F;project&#x2F;<span aria-hidden="true" class="line-numbers-rows"><spa
 <p>可参考文档<a href="https://blog.csdn.net/weixin_44146294/article/details/105474918">5</a>进行设置，此处一定要按照文档<a href="https://blog.csdn.net/weixin_44146294/article/details/105474918">5</a>中同时设置url和root，否则后续会遇到链接图片不对的问题（导致图片挂掉无法正常显示<a href="https://blog.csdn.net/m0_43401436/article/details/107191688">6</a>），hexo根目录的_config.yml的配置可参考以下链接 <a href="https://hexo.io/zh-cn/docs/configuration.html%E3%80%82">https://hexo.io/zh-cn/docs/configuration.html。</a></p>
 <h2 id="四-使用Theme及相关设置"><a href="#四-使用Theme及相关设置" class="headerlink" title="四 使用Theme及相关设置"></a>四 使用Theme及相关设置</h2><p>由于笔者不太喜欢把个人主页搞得太花里胡哨，所以这里就选取了极简风格的Next Theme，此处不再赘述相关配置细节，可参next的Github<a href="https://github.com/iissnan/hexo-theme-next">7</a>，或者博主Devin_的相关文档<a href="https://www.jianshu.com/p/3ff20be8574c">8</a></p>
 ]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
       <tags>
         <tag>Web</tag>
       </tags>
