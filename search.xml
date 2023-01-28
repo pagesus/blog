@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Operating Systems: Three Easy Pieces</title>
-    <url>/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/</url>
-    <content><![CDATA[<p><img src="/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/website.JPG" alt="web"><br>本文将推荐一本关于OS的好书，笔者读完这本书后对OS当中的一些基本概念有了更深的认识！下面将罗列一些相关的学习资源</p>
-<span id="more"></span>
-
-<p>Operating Systems: Three Easy Pieces是WI的教授Remzi等人的介绍关于OS的教程，按照三大部分：虚拟化（CPU和内存的抽象）、并发性（多线程并发）、持久性（I&#x2F;O及文件系统）对整个OS进行了概述。</p>
-<p>然后这本书的电子资源是免费的，当然肯定是英文版的。有没有中文版的呢，有也是有的，但是部分翻译比较感人，只能说是凑活着看，如果读到不太对劲的地方，不要怀疑肯定是翻译错了，直接去翻英文原文的好了；还有一点，译文并不包含最新的内容，这部分还得自己去扒英文。下面一并附上homework的链接：</p>
-<p>官网链接：<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org">https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org</a></p>
-<p>中文译文链接：<a href="https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese%E3%80%82">https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese。</a></p>
-<p>homework链接：<a href="https://github.com/remzi-arpacidusseau/ostep-homework">https://github.com/remzi-arpacidusseau/ostep-homework</a></p>
-<p>最后，这是一本好书，Enjoy it😉！</p>
-]]></content>
-      <categories>
-        <category>资源</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>OpenCV in Python I</title>
     <url>/blog/2022/11/26/OpenCV-in-Python-I/</url>
-    <content><![CDATA[<h2 id="1-什么是OpenCV？"><a href="#1-什么是OpenCV？" class="headerlink" title="1 什么是OpenCV？"></a>1 什么是OpenCV？</h2><p>OpenCV是Open Source Computer VisionLibrary的缩写，翻译成中文就是开源计算机视觉库，下面摘录官网(<a href="https://opencv.org/about/)%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8F%8F%E8%BF%B0">https://opencv.org/about/)的相关描述</a></p>
+    <content><![CDATA[<p>本文介绍python下opencv环境的搭建</p>
+<span id="more"></span>
+
+<h2 id="1-什么是OpenCV？"><a href="#1-什么是OpenCV？" class="headerlink" title="1 什么是OpenCV？"></a>1 什么是OpenCV？</h2><p>OpenCV是Open Source Computer VisionLibrary的缩写，翻译成中文就是开源计算机视觉库，下面摘录官网(<a href="https://opencv.org/about/)%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8F%8F%E8%BF%B0">https://opencv.org/about/)的相关描述</a></p>
 <pre class="line-numbers language-none"><code class="language-none">OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. 
 OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products.
 Being an Apache 2 licensed product, OpenCV makes it easy for businesses to utilize and modify the code.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -49,6 +32,26 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
       </categories>
       <tags>
         <tag>CV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Operating Systems: Three Easy Pieces</title>
+    <url>/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/</url>
+    <content><![CDATA[<p><img src="/blog/2022/10/22/Operating-Systems-Three-Easy-Pieces/website.JPG" alt="web"><br>本文将推荐一本关于OS的好书，笔者读完这本书后对OS当中的一些基本概念有了更深的认识！下面将罗列一些相关的学习资源</p>
+<span id="more"></span>
+
+<p>Operating Systems: Three Easy Pieces是WI的教授Remzi等人的介绍关于OS的教程，按照三大部分：虚拟化（CPU和内存的抽象）、并发性（多线程并发）、持久性（I&#x2F;O及文件系统）对整个OS进行了概述。</p>
+<p>然后这本书的电子资源是免费的，当然肯定是英文版的。有没有中文版的呢，有也是有的，但是部分翻译比较感人，只能说是凑活着看，如果读到不太对劲的地方，不要怀疑肯定是翻译错了，直接去翻英文原文的好了；还有一点，译文并不包含最新的内容，这部分还得自己去扒英文。下面一并附上homework的链接：</p>
+<p>官网链接：<a href="https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org">https://pages.cs.wisc.edu/~remzi/OSTEP/?source=techstories.org</a></p>
+<p>中文译文链接：<a href="https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese%E3%80%82">https://github.com/remzi-arpacidusseau/ostep-translations/tree/master/chinese。</a></p>
+<p>homework链接：<a href="https://github.com/remzi-arpacidusseau/ostep-homework">https://github.com/remzi-arpacidusseau/ostep-homework</a></p>
+<p>最后，这是一本好书，Enjoy it😉！</p>
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
       </tags>
   </entry>
   <entry>

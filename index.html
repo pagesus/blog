@@ -350,7 +350,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-01-28 16:53:04" itemprop="dateModified" datetime="2023-01-28T16:53:04+08:00">2023-01-28</time>
+      <time title="修改时间：2023-01-28 16:57:17" itemprop="dateModified" datetime="2023-01-28T16:57:17+08:00">2023-01-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -387,27 +387,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="1-什么是OpenCV？"><a href="#1-什么是OpenCV？" class="headerlink" title="1 什么是OpenCV？"></a>1 什么是OpenCV？</h2><p>OpenCV是Open Source Computer VisionLibrary的缩写，翻译成中文就是开源计算机视觉库，下面摘录官网(<a target="_blank" rel="noopener" href="https://opencv.org/about/)%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8F%8F%E8%BF%B0">https://opencv.org/about/)的相关描述</a></p>
-<pre class="line-numbers language-none"><code class="language-none">OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. 
-OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products.
-Being an Apache 2 licensed product, OpenCV makes it easy for businesses to utilize and modify the code.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="1-1-为什么使用Python学习OpenCV"><a href="#1-1-为什么使用Python学习OpenCV" class="headerlink" title="1.1 为什么使用Python学习OpenCV"></a>1.1 为什么使用Python学习OpenCV</h3><p>OpenCV支持诸如C++、Python、Java等大量主流编程语言，并且支持不同的操作系统（Window、Linux、Android，etc.）。Python编程简易，可以快速搭建应用原型，降低了学习OpenCV的学习难度。</p>
-<p>##2 工具安装及使用<br>###2.1 安装Anaconda<br>安装Anaconda没什么好说的，直接官网下载软件包，按照提示一步一步Next执行就可以了。这里需要注意的是，请安装本地环境python版本对应的Anaconda软件包，否则安装过程中会遇到<strong>Failed to create menus</strong>的问题。还好有好心人已经在<br>下面网页中给我们整理了各版本python和Anaconda版本的对应关系<br><a target="_blank" rel="noopener" href="https://github.com/koverholt/anaconda-version-map">https://github.com/koverholt/anaconda-version-map</a> 然后我们可以在 <a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> 下载相应的Anaconda版本即可。</p>
-<p>###2.2 安装opencv<br>打开Anaconda的Anaconda Prompt（切忌不要打开windows默认的prompt，否则opencv包不会安装到Anaconda环境下），执行以下命令</p>
-<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">(base) D:\anaconda3&gt;pip install opencv-contrib-python -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple
-
-#为了避免下载龟速，上述安装指定了清华的镜像源
-#以下验证安装是否成功
-(base) D:\anaconda3&gt;python
-Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import cv2
-&gt;&gt;&gt; print(cv2.__version__)
-4.6.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>上述安装OpenCV如遇问题可参考详细文档<a target="_blank" rel="noopener" href="https://blog.csdn.net/cxwwyc/article/details/103667184">1</a>，此处补充一个python离线包的资源网址：<a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/">Archived: Unofficial Windows Binaries for Python Extension Packages</a></p>
-<p>###2.3 Jupyter Notebook使用<br>启动Jupyter Notebook后台服务，终端显示<br><img src="/blog/2022/11/26/OpenCV-in-Python-I/Notebook1.JPG" alt="Notebook服务"><br>正常情况下浏览器会自动跳转到上述标黄链接，否则请手动浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8888/">http://localhost:8888</a> 即可打开以下的Notebook页面<br><img src="/blog/2022/11/26/OpenCV-in-Python-I/Notebook2.JPG" alt="Notebook浏览器页面"></p>
-<p>###2.4 相关reference<br>OpenCV文档  <a target="_blank" rel="noopener" href="https://docs.opencv.org/4.x/index.html">https://docs.opencv.org/4.x/index.html</a><br>Numpy文档   <a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/">https://www.numpy.org.cn/reference/</a><br>matplotlib  <a target="_blank" rel="noopener" href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
-
+          <p>本文介绍python下opencv环境的搭建</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2022/11/26/OpenCV-in-Python-I/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
