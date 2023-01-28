@@ -21,6 +21,65 @@
       </tags>
   </entry>
   <entry>
+    <title>OpenCV in Python I</title>
+    <url>/blog/2022/11/26/OpenCV-in-Python-I/</url>
+    <content><![CDATA[<h2 id="1-什么是OpenCV？"><a href="#1-什么是OpenCV？" class="headerlink" title="1 什么是OpenCV？"></a>1 什么是OpenCV？</h2><p>OpenCV是Open Source Computer VisionLibrary的缩写，翻译成中文就是开源计算机视觉库，下面摘录官网(<a href="https://opencv.org/about/)%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8F%8F%E8%BF%B0">https://opencv.org/about/)的相关描述</a></p>
+<pre class="line-numbers language-none"><code class="language-none">OpenCV (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. 
+OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products.
+Being an Apache 2 licensed product, OpenCV makes it easy for businesses to utilize and modify the code.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="1-1-为什么使用Python学习OpenCV"><a href="#1-1-为什么使用Python学习OpenCV" class="headerlink" title="1.1 为什么使用Python学习OpenCV"></a>1.1 为什么使用Python学习OpenCV</h3><p>OpenCV支持诸如C++、Python、Java等大量主流编程语言，并且支持不同的操作系统（Window、Linux、Android，etc.）。Python编程简易，可以快速搭建应用原型，降低了学习OpenCV的学习难度。</p>
+<p>##2 工具安装及使用<br>###2.1 安装Anaconda<br>安装Anaconda没什么好说的，直接官网下载软件包，按照提示一步一步Next执行就可以了。这里需要注意的是，请安装本地环境python版本对应的Anaconda软件包，否则安装过程中会遇到<strong>Failed to create menus</strong>的问题。还好有好心人已经在<br>下面网页中给我们整理了各版本python和Anaconda版本的对应关系<br><a href="https://github.com/koverholt/anaconda-version-map">https://github.com/koverholt/anaconda-version-map</a> 然后我们可以在 <a href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> 下载相应的Anaconda版本即可。</p>
+<p>###2.2 安装opencv<br>打开Anaconda的Anaconda Prompt（切忌不要打开windows默认的prompt，否则opencv包不会安装到Anaconda环境下），执行以下命令</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">(base) D:\anaconda3&gt;pip install opencv-contrib-python -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple
+
+#为了避免下载龟速，上述安装指定了清华的镜像源
+#以下验证安装是否成功
+(base) D:\anaconda3&gt;python
+Python 3.7.6 (default, Jan  8 2020, 20:23:39) [MSC v.1916 64 bit (AMD64)] :: Anaconda, Inc. on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; import cv2
+&gt;&gt;&gt; print(cv2.__version__)
+4.6.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上述安装OpenCV如遇问题可参考详细文档<a href="https://blog.csdn.net/cxwwyc/article/details/103667184">1</a>，此处补充一个python离线包的资源网址：<a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/">Archived: Unofficial Windows Binaries for Python Extension Packages</a></p>
+<p>###2.3 Jupyter Notebook使用<br>启动Jupyter Notebook后台服务，终端显示<br><img src="/blog/2022/11/26/OpenCV-in-Python-I/Notebook1.JPG" alt="Notebook服务"><br>正常情况下浏览器会自动跳转到上述标黄链接，否则请手动浏览器中输入<a href="http://localhost:8888/">http://localhost:8888</a> 即可打开以下的Notebook页面<br><img src="/blog/2022/11/26/OpenCV-in-Python-I/Notebook2.JPG" alt="Notebook浏览器页面"></p>
+<p>###2.4 相关reference<br>OpenCV文档  <a href="https://docs.opencv.org/4.x/index.html">https://docs.opencv.org/4.x/index.html</a><br>Numpy文档   <a href="https://www.numpy.org.cn/reference/">https://www.numpy.org.cn/reference/</a><br>matplotlib  <a href="https://matplotlib.org/stable/api/index.html">https://matplotlib.org/stable/api/index.html</a></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>CV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Why-numbering-should-start-at-zero[Translation]</title>
+    <url>/blog/2023/01/28/Translation-why-numbering-should-start-at-zero/</url>
+    <content><![CDATA[<p>下面翻译一篇Dijkstra关于为什么在编程语言中从0开始计数的文章，原文链接<a href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html">https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html</a></p>
+<span id="more"></span>
+
+<p>【译文】</p>
+<p>为了不使用令人生厌的…来表示自然数2,3,…,12序列，有以下四种惯例表示法供我们选择：</p>
+<ul>
+<li>a) 2 ≤ <em>i</em> &lt; 13</li>
+<li>b) 1 &lt; <em>i</em> ≤ 12</li>
+<li>c) 2 ≤ <em>i</em> ≤ 12</li>
+<li>d) 1 &lt; <em>i</em> &lt; 13</li>
+</ul>
+<p>是否有合理的理由偏好其中一种惯例表示法而不是其它的？是的，仔细观察a)和b)你会发现它们的优点在于范围上限和下限的差值刚好和自然序列的长度相等。因此，我们可以发现任意两个相邻序列：其中一个序列的范围上限就是另一个的范围下限。尽管这些表示是有效的，但是他们并不能让我们在a)和b)之间选出更好的表示法，所以让我们继续相关讨论。<br>在b)和d)表示的序列中并不包含下限范围的数值，这种表示方式看起来并不是很好，对于下限范围，我们更喜欢a)和c)的表示方式。假设我们包含上限范围数值，那么当整个序列缩小为空时，那时上限范围将会变成一个非自然范围值。这看起来也不是很好，因此我们更偏好方式a)和d)。综上所述，我们会更偏好选择a)来作为表示法。</p>
+<p><font color="red">【评注】</font>Xerox PARC开发的编程语言Mesa有特殊的符号以四种惯例来表示整数间隔。大量使用Mesa的经验表明使用另外三个惯例一直是大量错误的来源，Mesa程序员根据上述经验强烈建议不要使用后三种可用的表达方式。我提及的这个实验证据就是为了防止有些人对没有确切实证的结果感到不适。</p>
+<p>当我们想要利用下标来区分一个长度为N的序列时，挑选哪一个值作为它的起始值又是一个恼人的问题。延续惯例a)那么如果下标将从1开始，下标的范围就是1 ≤ <em>i</em> &lt; N+1，但是如果下标从0开始，就会得到一个看上去更好的范围 0 ≤  <em>i</em> &lt; N。因此就让我们的序号从0开始：这样一个元素的序号（下标）就和该序列中在本元素之前元素的数量相等(译注：比如数组元素a[2]表示该元素前有两个2元素)。这个故事的寓意就是在经历了数个世纪之后我们最好把0作为一个自然数。</p>
+<p><font color="red">【评注】</font>很遗憾，很多编程语言在设计的时候并没有关注上面这些细节。在FORTRAN中下标总是从1开始；在ALGOL 60和PASCAL中采用了上述的惯例c)；最近的SASL又按照FORTRAN的下标惯例进行实现：一个SASL上的序列同时也是正整数上的函数。</p>
+<p>以上的讨论是由最近偶然发生的一件事引起的：我在大学的一位数学同事（非计算机科学家）指责一些年轻的计算机科学家过于“狂热”，因为他们总是习惯从0开始计数。他采用最明智的惯例表示法作为挑衅（当然惯例也是很有用的：据我所知一个学生差点在考试中挂了，因为他认为所有的问题在考卷第一页底部就结束了）。我认同Anthony Jay的观点：“在宗教和其他领域中，必须抛弃这个教义，不是因为他错了，而是因为他是对的”。</p>
+<p><font color="grey">写在末尾：为了提高个人知识水品，顺便学一下英文，于是自作主张翻译一些感兴趣的外文文章,部分翻译有增删不保证逐字逐句翻译，另外个人英文水品有限，必有谬误，请不吝赐教及斧正！</font></p>
+]]></content>
+      <categories>
+        <category>计算机原理</category>
+      </categories>
+      <tags>
+        <tag>翻译</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Hexo+github pages搭建个人博客</title>
     <url>/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/</url>
     <content><![CDATA[<p><img src="/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/Blog_page.JPG"><br>使用Hexo在github pages服务上搭建简单个人博客</p>
