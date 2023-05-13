@@ -166,4 +166,321 @@ root: &#x2F;project&#x2F;<span aria-hidden="true" class="line-numbers-rows"><spa
         <tag>Web</tag>
       </tags>
   </entry>
+  <entry>
+    <title>The difference between binary multiples and decimal multiples in computer</title>
+    <url>/blog/2023/02/25/The-difference-between-binary-multiples-and-decimal-multiples-in-Computer/</url>
+    <content><![CDATA[<p><img src="/blog/2023/02/25/The-difference-between-binary-multiples-and-decimal-multiples-in-Computer/metricprefixes.jpg" alt="metricprefixes"></p>
+<p>当把你购买的标称500GB硬盘插入电脑格式化后发现电脑上显示只有大约460 gigabytes(严谨的说应该是gibibyte)，此时你是否感到疑惑？问题的原因在于硬盘的标称是基于10的对数计量，但是计算机系统却是基于2的对数进行计量的。下面详细对其进行分析。</p>
+<span id="more"></span>
+
+<h3 id="基于10-decimal-和基于2-binary-的对数表示法"><a href="#基于10-decimal-和基于2-binary-的对数表示法" class="headerlink" title="基于10(decimal)和基于2(binary)的对数表示法"></a>基于10(decimal)和基于2(binary)的对数表示法</h3><p>图表链接：<a href="https://physics.nist.gov/cuu/Units/prefixes.html">https://physics.nist.gov/cuu/Units/prefixes.html</a><br><img src="/blog/2023/02/25/The-difference-between-binary-multiples-and-decimal-multiples-in-Computer/decimal_prefix.JPG" alt="decimal_prefix"></p>
+<p>图表链接：<a href="https://physics.nist.gov/cuu/Units/binary.html">https://physics.nist.gov/cuu/Units/binary.html</a><br><img src="/blog/2023/02/25/The-difference-between-binary-multiples-and-decimal-multiples-in-Computer/binary_prefix.JPG" alt="binary_prefix"></p>
+<p>以上两表中给出了2进制对数和10进制对数的名称和前缀表示，2进制的kibi(1024)和10进制的kilo(1000)是存在数值上的差别的。以下表中列出上述不同表示法数值之间存在的差异</p>
+<table>
+<thead>
+<tr>
+<th>binary_prefix</th>
+<th>decimal_prefix</th>
+<th>difference</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>kibi</td>
+<td>kilo</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td>mebi</td>
+<td>mega</td>
+<td>4.9%</td>
+</tr>
+<tr>
+<td>gibi</td>
+<td>giga</td>
+<td>7.4%</td>
+</tr>
+<tr>
+<td>tebi</td>
+<td>tera</td>
+<td>10.0%</td>
+</tr>
+<tr>
+<td>pebi</td>
+<td>peta</td>
+<td>12.6%</td>
+</tr>
+<tr>
+<td>exbi</td>
+<td>exa</td>
+<td>15.3%</td>
+</tr>
+</tbody></table>
+<p>回到文章开头文问题，为什么买来标称500GB的硬盘插入电脑格式化后显示只有460多 gibibyte。10进制对数的500GB &#x3D; 500*1000^3 &#x3D; 500000000000 byte, 换算成2进制对数: 500000000000 &#x2F; (1024^3) 约等于465.7 gigibyte。那么为什么存在实际使用中使用的是10进制的GB，但是计算机中表示的是2进制的gigabyte，而且二者之间存在混用的情况？</p>
+<h3 id="2进制对数与10进制对数的混用"><a href="#2进制对数与10进制对数的混用" class="headerlink" title="2进制对数与10进制对数的混用"></a>2进制对数与10进制对数的混用</h3><p>众所周知，计算机底层使用2进制表示，所以在计算机中使用2进制对数司空见惯。曾经计算机的存储容量较小（几KB级别）时，计算机科学家发现2^10(1024)接近于1024，可以借用SI的kilo来表示1024。并且在差不多20年的时间内，几乎所有能接触计算机的人（价格昂贵，少数专业人士才能接触到）都能了解kilo实际表示的1024。但是几乎在一夜之间（随着技术发展及小型个人计算机的出现），计算机走向了普罗大众。而这些普罗大众并不具备计算机专业知识，在它们的概念中kilo在kilogram和kilomile中都是表示的是10^3，推广到计算机也是当然的。同时，计算机销售人员和商店页沿用了10进制对数的概念，因为这样更易于为普通客户接受。</p>
+<p>更多详细资料可参考以下文档<br>[1] <a href="https://iec.ch/prefixes-binary-multiples">About bits and bytes: prefixes for binary multiples</a><br>[2] <a href="https://physics.nist.gov/cuu/Units/binary.html">Prefixes for binary multiples</a><br>[3] <a href="https://physics.nist.gov/cuu/Units/prefixes.html">SI prefixes</a></p>
+]]></content>
+      <categories>
+        <category>百科</category>
+      </categories>
+      <tags>
+        <tag>数据计量单位</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具推荐 I</title>
+    <url>/blog/2023/03/26/Tools-Recommend_I/</url>
+    <content><![CDATA[<p><img src="/blog/2023/03/26/Tools-Recommend_I/Preface.JPG" alt="Preface"></p>
+<span id="more"></span>
+<h3 id="Mermaid"><a href="#Mermaid" class="headerlink" title="Mermaid"></a>Mermaid</h3><p>相信很多同学在写文档的时候都体验过繁琐的拖拽及修改过程（比如使用visio），拖拽自有其所见即所得的好处，但是修改实属繁琐。此处介绍mermaid工具用于绘图，该工具基于文本编辑，易于维护。其Github项目主页有如下介绍</p>
+<blockquote>
+<p>Mermaid is a JavaScript-based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams. The main purpose of Mermaid is to help documentation catch up with development.</p>
+</blockquote>
+<p>此处列出相关文档供查阅，不再赘述相关细节<br>Github: <a href="https://github.com/mermaid-js/mermaid">https://github.com/mermaid-js/mermaid</a><br>Docs: <a href="https://mermaid.js.org/intro/">https://mermaid.js.org/intro/</a><br>Online Live Editor: <a href="https://mermaid.live/">https://mermaid.live/</a><br>VS 扩展: 在VS下可使用Mermaid Editor插件，该插件支持mermaid文档的编辑及生成相应图像<br><img src="/blog/2023/03/26/Tools-Recommend_I/mermaid_editor.JPG" alt="Mermaid_Editor"></p>
+<h3 id="WindTerm"><a href="#WindTerm" class="headerlink" title="WindTerm"></a>WindTerm</h3><p>Github上开源的一款终端工具，无论是GUI还是性能上都能拷打putty&#x2F;xterm等一众经典终端工具。</p>
+<blockquote>
+<p>WindTerm<br>A Quicker and better SSH&#x2F;Telnet&#x2F;Serial&#x2F;Shell&#x2F;Sftp client for DevOps.</p>
+</blockquote>
+<p>Github: <a href="https://github.com/kingToolbox/WindTerm">https://github.com/kingToolbox/WindTerm</a><br>Release Site: <a href="https://github.com/kingToolbox/WindTerm/releases">https://github.com/kingToolbox/WindTerm/releases</a></p>
+<p><img src="/blog/2023/03/26/Tools-Recommend_I/windTerm.JPG" alt="windTerm"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS61C Reading Summary</title>
+    <url>/blog/2023/03/26/CS61C-Reading-Summary/</url>
+    <content><![CDATA[<p><img src="/blog/2023/03/26/CS61C-Reading-Summary/Preface.JPG" alt="Preface"></p>
+<span id="more"></span>
+
+<p>最近在看UC Berkley的CS61C课程(Great Ideas in Computer Architecture (Machine Structures)),本文档并非传统读书笔记，仅仅记录个人感兴趣的方向。<br>课程资源: <a href="https://inst.eecs.berkeley.edu/~cs61c/sp22/">https://inst.eecs.berkeley.edu/~cs61c/sp22/</a><br>Blibili: <a href="https://www.bilibili.com/video/BV15W4y1S7Lc/?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV15W4y1S7Lc/?spm_id_from=333.999.0.0</a> (机翻字幕，存在错误)</p>
+<h2 id="Byte-aliginment-and-ordering"><a href="#Byte-aliginment-and-ordering" class="headerlink" title="Byte aliginment and ordering"></a>Byte aliginment and ordering</h2><p>字节对齐和大小端(big-little endian)是计算机中非常基本且重要的概念。</p>
+<p>字节对齐的原因是出于处理器的执行效率（且部分处理器不支持非字节对齐的内存操作）,字节对齐允许处理器以更少的指令次数从内存中获取需要的数据。大多数编译器也遵照了字节对齐规则，对代码中的数据结构进行对齐，不同的处理器系对数据结构有不同的对齐策略，请参照相应的reference。</p>
+<p>大小端(big-little endian)是指计算机中数据的存储顺序，至于为什么不同的处理器厂商采用不同的大小端策略（比如Intel的80x86系列采用了little-endian，而Sun的SPARC采用了big-endian ），这属于历史原因。</p>
+<p>详细文档可参考：<a href="https://eventhelix.com/embedded/byte-alignment-and-ordering/">https://eventhelix.com/embedded/byte-alignment-and-ordering/</a></p>
+<h2 id="RISC-V-Assembly"><a href="#RISC-V-Assembly" class="headerlink" title="RISC V Assembly"></a>RISC V Assembly</h2><p>RISC-V Assembler Reference: <a href="https://michaeljclark.github.io/asm.html">https://michaeljclark.github.io/asm.html</a></p>
+<h2 id="Arm-Big-LITTLE-技术"><a href="#Arm-Big-LITTLE-技术" class="headerlink" title="Arm Big.LITTLE 技术"></a>Arm Big.LITTLE 技术</h2><p><img src="/blog/2023/03/26/CS61C-Reading-Summary/BigLittle.JPG" alt="BigLittle"><br>Arm的Big.LITTLE技术是一种使用了两种类型处理器的异构处理架构。”LILLE”处理器针对最优节能设计；而”BIG”处理器针对最佳计算性能设计。使用这两种不同设计的处理器，Big.LILLTE解决方案能够适用于智能手机、平板电脑、和其它设备不同动态场景下的使用。Big.LILLTE能够满足高速处理任务（例如手机游戏、网页浏览），低速处理任务（例如短信、电子邮件、音频播放），复杂app的静态处理任务。<br>在半导体工艺技术的发展过程中，智能手机和平板的用户对性能需求的增长要更胜于电池或者节能的需求。与此同时，用户也希望更长的电池使用时间。这一些列冲突对移动Soc设计的需求超出了工艺技术和传统电源管理技术所能提供的范围。<br>详细描述可参考: <a href="https://www.arm.com/technologies/big-little">https://www.arm.com/technologies/big-little</a><br>如何评价 ARM 的 big.LITTLE 大小核切换技术？:<a href="https://www.zhihu.com/question/23299449">https://www.zhihu.com/question/23299449</a></p>
+<h2 id="Flynn’s-taxonomy"><a href="#Flynn’s-taxonomy" class="headerlink" title="Flynn’s taxonomy"></a>Flynn’s taxonomy</h2><p><img src="/blog/2023/03/26/CS61C-Reading-Summary/Flynn's_taxonomy.JPG" alt="Flynn&#39;s_taxonomy"></p>
+<p>详细请参考：<a href="https://www.geeksforgeeks.org/computer-architecture-flynns-taxonomy/">https://www.geeksforgeeks.org/computer-architecture-flynns-taxonomy/</a></p>
+<h2 id="TLB-Translation-lookaside-buffer"><a href="#TLB-Translation-lookaside-buffer" class="headerlink" title="TLB (Translation lookaside buffer)"></a>TLB (Translation lookaside buffer)</h2><p>A translation lookaside buffer (TLB) is a type of memory cache that stores recent translations of virtual memory to physical addresses to enable faster retrieval. This high-speed cache is set up to keep track of recently used page table entries (PTEs). Also known as an address-translation cache, a TLB is a part of the processor’s memory management unit (MMU).</p>
+<p>more details: <a href="https://www.techtarget.com/whatis/definition/translation-look-aside-buffer-TLB">https://www.techtarget.com/whatis/definition/translation-look-aside-buffer-TLB</a></p>
+<h2 id="OpenMP"><a href="#OpenMP" class="headerlink" title="OpenMP"></a>OpenMP</h2><p><a href="https://www.openmp.org/">https://www.openmp.org/</a></p>
+<h2 id="Thrashing-in-OS"><a href="#Thrashing-in-OS" class="headerlink" title="Thrashing in OS"></a>Thrashing in OS</h2><p>A process is said to be thrashing if the CPU spends more time serving page faults than executing the pages. This leads to low CPU utilization and the Operating System in return tries to increase the degree of multiprogramming.</p>
+<p><img src="/blog/2023/03/26/CS61C-Reading-Summary/Thrashing.JPG" alt="Thrashing"></p>
+<p>more details: <a href="https://www.scaler.com/topics/thrashing-in-os/">https://www.scaler.com/topics/thrashing-in-os/</a></p>
+<h2 id="Memory-mapped-io-and-ported-io"><a href="#Memory-mapped-io-and-ported-io" class="headerlink" title="Memory mapped io and ported io"></a>Memory mapped io and ported io</h2><p>more details: <a href="https://technobyte.org/difference-memory-mapped-io-mapped-io/">https://technobyte.org/difference-memory-mapped-io-mapped-io/</a></p>
+<h2 id="I-x2F-O-Interface-Interrupt-and-DMA-Mode"><a href="#I-x2F-O-Interface-Interrupt-and-DMA-Mode" class="headerlink" title="I&#x2F;O Interface (Interrupt and DMA Mode)"></a>I&#x2F;O Interface (Interrupt and DMA Mode)</h2><p>more details: <a href="https://www.geeksforgeeks.org/io-interface-interrupt-dma-mode/">https://www.geeksforgeeks.org/io-interface-interrupt-dma-mode/</a></p>
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Boot Raspberry</title>
+    <url>/blog/2021/01/31/RaspberryPi-Setup/</url>
+    <content><![CDATA[<img src="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif" alt="plug in the pi">
+
+<p>本文描述了购买树莓派及树莓派上电等基本功能设置</p>
+<span id="more"></span>
+
+<h1 id="1-购买树莓派"><a href="#1-购买树莓派" class="headerlink" title="1 购买树莓派"></a>1 购买树莓派</h1><p>此处就不放链接了，在X宝上搜一下就能搜到相关店铺，找销量多一点的店铺（方便售后）就可以了，建议买基本配置，没必要买一大堆外设传感器什么的，后续如果需要可以单买，估计价格比套件价格还要便宜（这年头商家不就指着套餐挣钱嘛）</p>
+<h1 id="2-树莓派简单介绍"><a href="#2-树莓派简单介绍" class="headerlink" title="2 树莓派简单介绍"></a>2 树莓派简单介绍</h1><h2 id="2-1-CPU简介"><a href="#2-1-CPU简介" class="headerlink" title="2.1 CPU简介"></a>2.1 CPU简介</h2><p>树莓派4 使用了Broadcom的BCM2711芯片，该芯片有4个CPU核，使用了更加强大的ARM A72核。BCM2711芯片拥有更强大的GPU特性，由内置PCIe链接的USB2、USB3端口带来了更快的I&#x2F;O，同时也支持访问更大范围的内存。ARM A72核支持在1.5GHz频率下运行，使得树莓派4速度上要比树莓派3B+要快上50%。主要技术参数如下所示：</p>
+<p><strong>Processor:</strong>  Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5 GHz</p>
+<p><strong>Memory:</strong> Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)</p>
+<p><strong>Caches:</strong> 32 KB data + 48 KB instruction L1 cache per core. 1MB L2 cache.</p>
+<p><strong>Multimedia:</strong> H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES, 3.0 graphics</p>
+<p><strong>I&#x2F;O:</strong> PCIe bus, onboard Ethernet port, 2 × DSI ports  (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed  on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up  to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video  output, composite video output.</p>
+<p>详细参数请参看以下链接：<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/README.md">https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/README.md</a></p>
+<h2 id="2-2-树莓派主板示意图"><a href="#2-2-树莓派主板示意图" class="headerlink" title="2.2 树莓派主板示意图"></a>2.2 树莓派主板示意图</h2><p>树莓派官方主板示意图如下gif所示<br><img src="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif" alt="plug in the pi"></p>
+<p>树莓派的主板实物图如下图所示</p>
+<img src="/blog/2021/01/31/RaspberryPi-Setup/mainboard.jpg" alt="mainboard" title="mainboard" style="zoom:50%;">
+
+<p>此处有以下几点需要注意：</p>
+<ul>
+<li>1 SD卡相关<br>建议SD卡的大小大于8GB，我的套件里面里面的SD卡容量是32GB的，如果购买的套件里面的SD卡容量过小可以自行X宝上其它店铺上去购买，购买的时候最好同时购买读卡器（一般店铺都是提供的）便于后续将OS镜像烧写到SD卡上</li>
+<li>2 电源相关<br>树莓派4B支持USB type-C供电，树莓派4B的供电为5V&#x2F;2A，以下表格中为推荐电压电流设置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Recommended PSU current capacity</th>
+<th>Maximum total USB peripheral current draw</th>
+<th>Typical bare-board active current consumption</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Raspberry Pi 4 Model B</td>
+<td>3.0A</td>
+<td>1.2A</td>
+<td>600mA</td>
+</tr>
+</tbody></table>
+<h1 id="3-启动树莓派"><a href="#3-启动树莓派" class="headerlink" title="3 启动树莓派"></a>3 启动树莓派</h1><p>由于我买的树莓派套件里面的SD卡（32GB）是没有烧写OS的，所以需要自行烧写，烧写树莓派的步骤如下</p>
+<ul>
+<li>a.官网下载树莓派OS–<a href="http://www.raspberrypi.org/downloads">Raspberry Pi OS</a></li>
+<li>b.使用SD Formatter软件格式SD卡</li>
+<li>c. 使用Win32DiskImager将步骤a中下载的.img烧录到步骤b中</li>
+</ul>
+<p>大功告成之后将SD卡插回到树莓派主板卡槽当中，接通电源，并且连接外接显示器，主板指示灯如上述gif中显示之后，屏幕点亮，设备boot进OS，设备功能验证OK，当然你可以顺便验证主板上上的4个USB口、2个HDMI口、1个网口是否正常工作（若异常，及时联系卖家退换货）</p>
+<h1 id="4-树莓派换源"><a href="#4-树莓派换源" class="headerlink" title="4 树莓派换源"></a>4 树莓派换源</h1><p>由于官网下载速度感人，建议换成国内镜像源，替换的时候注意镜像源的版本要和系统版本一致，使用如下命令可查看系统版本</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pi@raspberrypi:~ $ lsb_release  <span class="token parameter variable">-a</span>
+No LSB modules are available.
+Distributor ID: Raspbian
+Description:    Raspbian GNU/Linux <span class="token number">10</span> <span class="token punctuation">(</span>buster<span class="token punctuation">)</span>
+Release:        <span class="token number">10</span>
+Codename:       buster<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里使用的linux系统是buster,所以更换镜像源的时候请注意，否则安装软件的时候会出现各种异常的依赖性问题。更换镜像源请参考<a href="https://blog.csdn.net/zqxdsy/article/details/102574239"><br>树莓派4B换清华源并更换系统源（Raspbian-buster系统）
+</a></p>
+<h1 id="5-树莓派散热片及风扇安装"><a href="#5-树莓派散热片及风扇安装" class="headerlink" title="5 树莓派散热片及风扇安装"></a>5 树莓派散热片及风扇安装</h1><p>由于我买的套件里面包含了散热片和风扇（建议购买这两样，主板芯片过热很容易触发过热保护导致掉电或者重启），所以这里也提及一下：</p>
+<ul>
+<li>1 散热片建议一次性贴到芯片上，贴歪了也不要扣下来了，可能损伤主板芯片电路</li>
+<li>2 我买的套件中风扇供电要求是DC 5V的，参考下面的树莓派GPIO引脚布局</li>
+</ul>
+<p><img src="/blog/2021/01/31/RaspberryPi-Setup/RaspberryPi-Setup/gpio.jpg" alt="GPIO" title="GPIO"></p>
+<p>因此将风扇接到引脚4、6上就可以了，风扇引脚是区分正负极的（红正黑负），所以按照红4黑6进行连接就可以了</p>
+<h1 id="6-远程控制"><a href="#6-远程控制" class="headerlink" title="6 远程控制"></a>6 远程控制</h1><p>远程控制必不可少，总会出现没有外界显示屏可以接入树莓派HDMI输出的情况，这时候远程调试就有了用武之地。可以通过VNC、SSH等多种方式实现PC端远程控制树莓派主机的方法，以下给出相关链接及描述</p>
+<ul>
+<li>1 <a href="https://www.raspberrypi.org/documentation/remote-access/">Remote Control</a> 树莓派官网文档介绍了从IP获取和各种远程控制协议的实现方法</li>
+<li>2 <a href="https://blog.csdn.net/xia0_ba1/article/details/81746607">VNC连接树莓派</a></li>
+<li>3 树莓派配置samba服务器实现文件共享：<a href="https://blog.csdn.net/byforson/article/details/90900640">https://blog.csdn.net/byforson/article/details/90900640</a> 和 <a href="https://www.lxx1.com/4434">https://www.lxx1.com/4434</a></li>
+</ul>
+<h1 id="7-串口连接"><a href="#7-串口连接" class="headerlink" title="7 串口连接"></a>7 串口连接</h1><p>嵌入式开发必备的利器之一就是串口调试，树莓派同样支持串口调试功能。但是需要需要外购买usb2ttl线来将树莓派输出的ttl电平转换到笔记本支持的usb信号。市面上主要有以下三种USB转串口芯片：</p>
+<ul>
+<li>FT232</li>
+<li>PL2303</li>
+<li>CH340（推荐，笔者选用）</li>
+</ul>
+<p>上述三种芯片的说明比较可以参考文档：<a href="https://blog.csdn.net/guomutian911/article/details/44001721%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AE%BE%E5%A4%87%E7%9A%84%E8%B4%AD%E4%B9%B0%E5%8F%AF%E4%BB%A5%E5%88%B0X%E5%AE%9D%E5%92%8C%E6%8B%BC%E5%A4%95%E5%A4%95%E4%B8%8A%E8%87%AA%E8%A1%8C%E9%80%89%E8%B4%AD%EF%BC%8C%E4%BB%B7%E6%A0%BC%E5%A4%A7%E6%A6%825-10%E5%85%83%E5%B7%A6%E5%8F%B3%EF%BC%8C%E5%8F%AF%E8%87%AA%E8%A1%8C%E6%A0%B9%E6%8D%AE%E9%A2%84%E7%AE%97%E8%BF%9B%E8%A1%8C%E9%80%89%E8%B4%AD%EF%BC%8C%E7%AC%94%E8%80%85%E9%80%89%E6%8B%A9%E4%BA%86CH340G%E6%A8%A1%E5%9D%97%E7%9A%84%E4%B8%B2%E5%8F%A3%E8%BD%AC%E6%8D%A2%E7%BA%BF%E5%A4%A7%E6%A6%829%E5%9D%97%E5%B7%A6%E5%8F%B3%E7%9A%84%E6%A0%B7%E5%AD%90%E3%80%82">https://blog.csdn.net/guomutian911/article/details/44001721，具体设备的购买可以到X宝和拼夕夕上自行选购，价格大概5-10元左右，可自行根据预算进行选购，笔者选择了CH340G模块的串口转换线大概9块左右的样子。</a></p>
+<p>CH340系列芯片的驱动可到官网进行下载：<a href="http://www.wch.cn/downloads/CH341SER_EXE.html">http://www.wch.cn/downloads/CH341SER_EXE.html</a></p>
+<p>树莓派4B的串口线连接及相关设置可参考：<a href="https://blog.csdn.net/qq_37224534/article/details/106437958">https://blog.csdn.net/qq_37224534/article/details/106437958</a></p>
+<p>串口登录效果如下图所示</p>
+<p><img src="/blog/2021/01/31/RaspberryPi-Setup/serial_comm.jpg" alt="serial_comm" title="serial_comm"></p>
+<h1 id="8-性能测试"><a href="#8-性能测试" class="headerlink" title="8 性能测试"></a>8 性能测试</h1><p>使用sysbench工具可以对系统的CPU、内存读写、I&#x2F;O等性能进行测试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">##安装sysbench</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> sysbench
+
+<span class="token comment">#命令参数</span>
+Usage:
+  sysbench <span class="token punctuation">[</span>general-options<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token parameter variable">--test</span><span class="token operator">=</span><span class="token operator">&lt;</span>test-name<span class="token operator">></span> <span class="token punctuation">[</span>test-options<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token builtin class-name">command</span>
+
+General options:
+  --num-threads<span class="token operator">=</span>N            number of threads to use <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+  --max-requests<span class="token operator">=</span>N           limit <span class="token keyword">for</span> total number of requests <span class="token punctuation">[</span><span class="token number">10000</span><span class="token punctuation">]</span>
+  --max-time<span class="token operator">=</span>N               limit <span class="token keyword">for</span> total execution <span class="token function">time</span> <span class="token keyword">in</span> seconds <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  --forced-shutdown<span class="token operator">=</span>STRING   amount of <span class="token function">time</span> to <span class="token function">wait</span> after --max-time before forcing <span class="token function">shutdown</span> <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  --thread-stack-size<span class="token operator">=</span>SIZE   size of stack per thread <span class="token punctuation">[</span>32K<span class="token punctuation">]</span>
+  --init-rng<span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>        initialize random number generator <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--test</span><span class="token operator">=</span>STRING              <span class="token builtin class-name">test</span> to run
+  <span class="token parameter variable">--debug</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>           print <span class="token function">more</span> debugging info <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--validate</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>        perform validation checks where possible <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--help</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>            print <span class="token builtin class-name">help</span> and <span class="token builtin class-name">exit</span>
+  <span class="token parameter variable">--version</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>         print version and <span class="token builtin class-name">exit</span>
+
+Compiled-in tests:
+  fileio - File I/O <span class="token builtin class-name">test</span>
+  cpu - CPU performance <span class="token builtin class-name">test</span>
+  memory - Memory functions speed <span class="token builtin class-name">test</span>
+  threads - Threads subsystem performance <span class="token builtin class-name">test</span>
+  mutex - Mutex performance <span class="token builtin class-name">test</span>
+  oltp - OLTP <span class="token builtin class-name">test</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>[1]<a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">Setting up Your Raspberry Pi</a> 官网入门安装文档<br>[2]<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_4b_4p0_reduced.pdf">Schematics</a> 树莓派主板原理图<br>[3]<a href="https://www.waveshare.net/study/article-595-1.html">树莓派系列教程2：树莓派烧写镜像</a><br>[4][新手入门]树莓派Raspberry 学习笔记2 散热片&amp;散热风扇&amp;外壳安装](<a href="https://blog.csdn.net/weixin_42368268/article/details/100178652">https://blog.csdn.net/weixin_42368268/article/details/100178652</a>)<br>[5]<a href="https://blog.csdn.net/chengyq116/article/details/86500026">vim安装失败</a><br>[6]<a href="https://www.jianshu.com/p/60e527149ce8">树莓派性能测试教程</a></p>
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>RaspberryPi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS162-Reading-Summary</title>
+    <url>/blog/2023/05/03/CS162-Reading-Summary/</url>
+    <content><![CDATA[<p><img src="/blog/2023/05/03/CS162-Reading-Summary/Preface.JPG" alt="Preface"></p>
+<span id="more"></span>
+
+<p>最近在看UC Berkley的CS162课程(Operating Systems and Systems Programming),本文档并非传统读书笔记，仅仅记录个人感兴趣的方向。<br>课程资源: <a href="https://inst.eecs.berkeley.edu/~cs162/sp22/">https://inst.eecs.berkeley.edu/~cs162/sp22/</a><br>Blibili: <a href="https://www.bilibili.com/video/BV1ab4y1b7BU/?spm_id_from=333.999.0.0&amp;vd_source=ad1de925221aeeaaca365d6a27465fe9">https://www.bilibili.com/video/BV1ab4y1b7BU/?spm_id_from=333.999.0.0&amp;vd_source=ad1de925221aeeaaca365d6a27465fe9</a> (机翻字幕，存在错误)</p>
+<h2 id="Threadpool"><a href="#Threadpool" class="headerlink" title="Threadpool"></a>Threadpool</h2><p>What is Thread Pool?<br><a href="https://www.scaler.com/topics/operating-system/thread-pool/">https://www.scaler.com/topics/operating-system/thread-pool/</a></p>
+<p>C++ threadpool project(使用C++11的线程特性实现的线程池，100行不到)<br><a href="https://github.com/progschj/ThreadPool">https://github.com/progschj/ThreadPool</a></p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">git clone https:&#x2F;&#x2F;github.com&#x2F;progschj&#x2F;ThreadPool.git
+g++ example.cpp -o example -lpthread
+pi@raspberrypi:~&#x2F;Codes&#x2F;ThreadPool $ .&#x2F;example 
+hello hello 01
+
+hello 2
+hello 3
+world 1
+world 0
+world 2
+hello 4
+0 hello 15 
+4 hello 6
+world 3
+9 hello 7
+world 4
+world 5
+16 25 world 6
+36 world 7
+49 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Mesa-VS-Hoare-semantics"><a href="#Mesa-VS-Hoare-semantics" class="headerlink" title="Mesa VS Hoare semantics"></a>Mesa VS Hoare semantics</h2><p>Details: <a href="https://samuelsorial.tech/mesa-vs-hoare-semantics">https://samuelsorial.tech/mesa-vs-hoare-semantics</a></p>
+<h2 id="Whtat’s-RPC"><a href="#Whtat’s-RPC" class="headerlink" title="Whtat’s RPC"></a>Whtat’s RPC</h2><p>谁能用通俗的语言解释一下什么是 RPC 框架？ - 用心阁的回答 - 知乎<br><a href="https://www.zhihu.com/question/25536695/answer/36197244">https://www.zhihu.com/question/25536695/answer/36197244</a></p>
+<h2 id="Wthat-is-CPU-Burst"><a href="#Wthat-is-CPU-Burst" class="headerlink" title="Wthat is CPU Burst?"></a>Wthat is CPU Burst?</h2><p><a href="https://cpulifes.com/what-is-cpu-burst/#:~:text=CPU%20burst%20is%20a%20term%20used%20to%20describe,of%20processes%20is%20known%20as%20the%20%E2%80%9Cburst%E2%80%9D%20time">https://cpulifes.com/what-is-cpu-burst/#:~:text=CPU%20burst%20is%20a%20term%20used%20to%20describe,of%20processes%20is%20known%20as%20the%20%E2%80%9Cburst%E2%80%9D%20time</a>.</p>
+]]></content>
+      <categories>
+        <category>资源</category>
+      </categories>
+      <tags>
+        <tag>Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>doctest</title>
+    <url>/blog/2023/05/13/doctest/</url>
+    <content><![CDATA[<p><img src="/blog/2023/05/13/doctest/logo.svg" alt="Preface"></p>
+<span id="more"></span>
+
+<p>doctest是一个基于C++的测试框架，与现有其它框架相比在编译时间及运行时间上有极大的改善。<br>该框架使用方法简单，仅需包含头文件<em>doctest.h</em>及#define指定的Macro即可使用（编译器需要支持C++11 feature），下面测试项目主页描述简单demo</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include &quot;doctest.h&quot;
+
+int factorial(int number) &#123; return number &lt;&#x3D; 1 ? number : factorial(number - 1) * number; &#125;
+
+TEST_CASE(&quot;testing the factorial function&quot;) &#123;
+    CHECK(factorial(1) &#x3D;&#x3D; 1);
+    CHECK(factorial(2) &#x3D;&#x3D; 2);
+    CHECK(factorial(3) &#x3D;&#x3D; 6);
+    CHECK(factorial(10) &#x3D;&#x3D; 3628800);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编译及运行结果如下</p>
+<pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">g++ -std&#x3D;c++11 test.cpp -o test
+pi@raspberrypi:~&#x2F;Codes&#x2F;doctest $ .&#x2F;test 
+[doctest] doctest version is &quot;2.4.11&quot;
+[doctest] run with &quot;--help&quot; for options
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+[doctest] test cases: 1 | 1 passed | 0 failed | 0 skipped
+[doctest] assertions: 4 | 4 passed | 0 failed |
+[doctest] Status: SUCCESS!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>详细描述github项目主页都有描述，此处不赘述及翻译。<br>github项目：<a href="https://github.com/doctest/doctest">https://github.com/doctest/doctest</a><br>Release(v2.4.11): <a href="https://github.com/doctest/doctest/releases/tag/v2.4.11">https://github.com/doctest/doctest/releases/tag/v2.4.11</a></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
 </search>

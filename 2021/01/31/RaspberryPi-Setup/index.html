@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pagesus.github.io","root":"/blog/","images":"/blog/images","scheme":"Pisces","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":"yes","style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="本文描述了购买树莓派及树莓派上电等基本功能设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boot Raspberry">
+<meta property="og:url" content="https://pagesus.github.io/2021/01/31/RaspberryPi-Setup/index.html">
+<meta property="og:site_name" content="Sisyphus&#39;s Blog">
+<meta property="og:description" content="本文描述了购买树莓派及树莓派上电等基本功能设置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif">
+<meta property="og:image" content="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif">
+<meta property="og:image" content="https://pagesus.github.io/blog/2021/01/31/RaspberryPi-Setup/mainboard.jpg">
+<meta property="og:image" content="https://pagesus.github.io/blog/2021/01/31/RaspberryPi-Setup/RaspberryPi-Setup/gpio.jpg">
+<meta property="og:image" content="https://pagesus.github.io/blog/2021/01/31/RaspberryPi-Setup/serial_comm.jpg">
+<meta property="article:published_time" content="2021-01-31T09:41:59.000Z">
+<meta property="article:modified_time" content="2023-04-29T08:59:33.577Z">
+<meta property="article:author" content="wayne">
+<meta property="article:tag" content="RaspberryPi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif">
+
+
+<link rel="canonical" href="https://pagesus.github.io/2021/01/31/RaspberryPi-Setup/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pagesus.github.io/2021/01/31/RaspberryPi-Setup/","path":"2021/01/31/RaspberryPi-Setup/","title":"Boot Raspberry"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Boot Raspberry | Sisyphus's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Sisyphus's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">不知名的个人主页</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E8%B4%AD%E4%B9%B0%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">1.</span> <span class="nav-text">1 购买树莓派</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">2 树莓派简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-CPU%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 CPU简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%BB%E6%9D%BF%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 树莓派主板示意图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%90%AF%E5%8A%A8%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">3.</span> <span class="nav-text">3 启动树莓派</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8D%A2%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">4 树莓派换源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%95%A3%E7%83%AD%E7%89%87%E5%8F%8A%E9%A3%8E%E6%89%87%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">5 树莓派散热片及风扇安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">6.</span> <span class="nav-text">6 远程控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-%E4%B8%B2%E5%8F%A3%E8%BF%9E%E6%8E%A5"><span class="nav-number">7.</span> <span class="nav-text">7 串口连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">8 性能测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">9.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="wayne"
+      src="/blog/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">wayne</p>
+  <div class="site-description" itemprop="description">Think twice, code once.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/pagesus" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;pagesus" rel="noopener" target="_blank">GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/pagesus" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pagesus.github.io/2021/01/31/RaspberryPi-Setup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.jpg">
+      <meta itemprop="name" content="wayne">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sisyphus's Blog">
+      <meta itemprop="description" content="Think twice, code once.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Boot Raspberry | Sisyphus's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Boot Raspberry
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-31 17:41:59" itemprop="dateCreated datePublished" datetime="2021-01-31T17:41:59+08:00">2021-01-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-04-29 16:59:33" itemprop="dateModified" datetime="2023-04-29T16:59:33+08:00">2023-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">嵌入式</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <img src="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif" alt="plug in the pi">
+
+<p>本文描述了购买树莓派及树莓派上电等基本功能设置</p>
+<span id="more"></span>
+
+<h1 id="1-购买树莓派"><a href="#1-购买树莓派" class="headerlink" title="1 购买树莓派"></a>1 购买树莓派</h1><p>此处就不放链接了，在X宝上搜一下就能搜到相关店铺，找销量多一点的店铺（方便售后）就可以了，建议买基本配置，没必要买一大堆外设传感器什么的，后续如果需要可以单买，估计价格比套件价格还要便宜（这年头商家不就指着套餐挣钱嘛）</p>
+<h1 id="2-树莓派简单介绍"><a href="#2-树莓派简单介绍" class="headerlink" title="2 树莓派简单介绍"></a>2 树莓派简单介绍</h1><h2 id="2-1-CPU简介"><a href="#2-1-CPU简介" class="headerlink" title="2.1 CPU简介"></a>2.1 CPU简介</h2><p>树莓派4 使用了Broadcom的BCM2711芯片，该芯片有4个CPU核，使用了更加强大的ARM A72核。BCM2711芯片拥有更强大的GPU特性，由内置PCIe链接的USB2、USB3端口带来了更快的I&#x2F;O，同时也支持访问更大范围的内存。ARM A72核支持在1.5GHz频率下运行，使得树莓派4速度上要比树莓派3B+要快上50%。主要技术参数如下所示：</p>
+<p><strong>Processor:</strong>  Quad-core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5 GHz</p>
+<p><strong>Memory:</strong> Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)</p>
+<p><strong>Caches:</strong> 32 KB data + 48 KB instruction L1 cache per core. 1MB L2 cache.</p>
+<p><strong>Multimedia:</strong> H.265 (4Kp60 decode); H.264 (1080p60 decode, 1080p30 encode); OpenGL ES, 3.0 graphics</p>
+<p><strong>I&#x2F;O:</strong> PCIe bus, onboard Ethernet port, 2 × DSI ports  (only one exposed on Raspberry Pi 4B), 2 × CSI ports (only one exposed  on Raspberry Pi 4B), up to 6 × I2C, up to 6 × UART (muxed with I2C), up  to 6 × SPI (only five exposed on Raspberry Pi 4B), dual HDMI video  output, composite video output.</p>
+<p>详细参数请参看以下链接：<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/README.md">https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/README.md</a></p>
+<h2 id="2-2-树莓派主板示意图"><a href="#2-2-树莓派主板示意图" class="headerlink" title="2.2 树莓派主板示意图"></a>2.2 树莓派主板示意图</h2><p>树莓派官方主板示意图如下gif所示<br><img src="https://projects-static.raspberrypi.org/projects/raspberry-pi-setting-up/4fbbfd4c5b5317adb2175856f4df9db32f2b97d6/en/images/pi-plug-in.gif" alt="plug in the pi"></p>
+<p>树莓派的主板实物图如下图所示</p>
+<img src="/blog/2021/01/31/RaspberryPi-Setup/mainboard.jpg" alt="mainboard" title="mainboard" style="zoom:50%;">
+
+<p>此处有以下几点需要注意：</p>
+<ul>
+<li>1 SD卡相关<br>建议SD卡的大小大于8GB，我的套件里面里面的SD卡容量是32GB的，如果购买的套件里面的SD卡容量过小可以自行X宝上其它店铺上去购买，购买的时候最好同时购买读卡器（一般店铺都是提供的）便于后续将OS镜像烧写到SD卡上</li>
+<li>2 电源相关<br>树莓派4B支持USB type-C供电，树莓派4B的供电为5V&#x2F;2A，以下表格中为推荐电压电流设置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Recommended PSU current capacity</th>
+<th>Maximum total USB peripheral current draw</th>
+<th>Typical bare-board active current consumption</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Raspberry Pi 4 Model B</td>
+<td>3.0A</td>
+<td>1.2A</td>
+<td>600mA</td>
+</tr>
+</tbody></table>
+<h1 id="3-启动树莓派"><a href="#3-启动树莓派" class="headerlink" title="3 启动树莓派"></a>3 启动树莓派</h1><p>由于我买的树莓派套件里面的SD卡（32GB）是没有烧写OS的，所以需要自行烧写，烧写树莓派的步骤如下</p>
+<ul>
+<li>a.官网下载树莓派OS–<a target="_blank" rel="noopener" href="http://www.raspberrypi.org/downloads">Raspberry Pi OS</a></li>
+<li>b.使用SD Formatter软件格式SD卡</li>
+<li>c. 使用Win32DiskImager将步骤a中下载的.img烧录到步骤b中</li>
+</ul>
+<p>大功告成之后将SD卡插回到树莓派主板卡槽当中，接通电源，并且连接外接显示器，主板指示灯如上述gif中显示之后，屏幕点亮，设备boot进OS，设备功能验证OK，当然你可以顺便验证主板上上的4个USB口、2个HDMI口、1个网口是否正常工作（若异常，及时联系卖家退换货）</p>
+<h1 id="4-树莓派换源"><a href="#4-树莓派换源" class="headerlink" title="4 树莓派换源"></a>4 树莓派换源</h1><p>由于官网下载速度感人，建议换成国内镜像源，替换的时候注意镜像源的版本要和系统版本一致，使用如下命令可查看系统版本</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pi@raspberrypi:~ $ lsb_release  <span class="token parameter variable">-a</span>
+No LSB modules are available.
+Distributor ID: Raspbian
+Description:    Raspbian GNU/Linux <span class="token number">10</span> <span class="token punctuation">(</span>buster<span class="token punctuation">)</span>
+Release:        <span class="token number">10</span>
+Codename:       buster<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里使用的linux系统是buster,所以更换镜像源的时候请注意，否则安装软件的时候会出现各种异常的依赖性问题。更换镜像源请参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/zqxdsy/article/details/102574239"><br>树莓派4B换清华源并更换系统源（Raspbian-buster系统）
+</a></p>
+<h1 id="5-树莓派散热片及风扇安装"><a href="#5-树莓派散热片及风扇安装" class="headerlink" title="5 树莓派散热片及风扇安装"></a>5 树莓派散热片及风扇安装</h1><p>由于我买的套件里面包含了散热片和风扇（建议购买这两样，主板芯片过热很容易触发过热保护导致掉电或者重启），所以这里也提及一下：</p>
+<ul>
+<li>1 散热片建议一次性贴到芯片上，贴歪了也不要扣下来了，可能损伤主板芯片电路</li>
+<li>2 我买的套件中风扇供电要求是DC 5V的，参考下面的树莓派GPIO引脚布局</li>
+</ul>
+<p><img src="/blog/2021/01/31/RaspberryPi-Setup/RaspberryPi-Setup/gpio.jpg" alt="GPIO" title="GPIO"></p>
+<p>因此将风扇接到引脚4、6上就可以了，风扇引脚是区分正负极的（红正黑负），所以按照红4黑6进行连接就可以了</p>
+<h1 id="6-远程控制"><a href="#6-远程控制" class="headerlink" title="6 远程控制"></a>6 远程控制</h1><p>远程控制必不可少，总会出现没有外界显示屏可以接入树莓派HDMI输出的情况，这时候远程调试就有了用武之地。可以通过VNC、SSH等多种方式实现PC端远程控制树莓派主机的方法，以下给出相关链接及描述</p>
+<ul>
+<li>1 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/remote-access/">Remote Control</a> 树莓派官网文档介绍了从IP获取和各种远程控制协议的实现方法</li>
+<li>2 <a target="_blank" rel="noopener" href="https://blog.csdn.net/xia0_ba1/article/details/81746607">VNC连接树莓派</a></li>
+<li>3 树莓派配置samba服务器实现文件共享：<a target="_blank" rel="noopener" href="https://blog.csdn.net/byforson/article/details/90900640">https://blog.csdn.net/byforson/article/details/90900640</a> 和 <a target="_blank" rel="noopener" href="https://www.lxx1.com/4434">https://www.lxx1.com/4434</a></li>
+</ul>
+<h1 id="7-串口连接"><a href="#7-串口连接" class="headerlink" title="7 串口连接"></a>7 串口连接</h1><p>嵌入式开发必备的利器之一就是串口调试，树莓派同样支持串口调试功能。但是需要需要外购买usb2ttl线来将树莓派输出的ttl电平转换到笔记本支持的usb信号。市面上主要有以下三种USB转串口芯片：</p>
+<ul>
+<li>FT232</li>
+<li>PL2303</li>
+<li>CH340（推荐，笔者选用）</li>
+</ul>
+<p>上述三种芯片的说明比较可以参考文档：<a target="_blank" rel="noopener" href="https://blog.csdn.net/guomutian911/article/details/44001721%EF%BC%8C%E5%85%B7%E4%BD%93%E8%AE%BE%E5%A4%87%E7%9A%84%E8%B4%AD%E4%B9%B0%E5%8F%AF%E4%BB%A5%E5%88%B0X%E5%AE%9D%E5%92%8C%E6%8B%BC%E5%A4%95%E5%A4%95%E4%B8%8A%E8%87%AA%E8%A1%8C%E9%80%89%E8%B4%AD%EF%BC%8C%E4%BB%B7%E6%A0%BC%E5%A4%A7%E6%A6%825-10%E5%85%83%E5%B7%A6%E5%8F%B3%EF%BC%8C%E5%8F%AF%E8%87%AA%E8%A1%8C%E6%A0%B9%E6%8D%AE%E9%A2%84%E7%AE%97%E8%BF%9B%E8%A1%8C%E9%80%89%E8%B4%AD%EF%BC%8C%E7%AC%94%E8%80%85%E9%80%89%E6%8B%A9%E4%BA%86CH340G%E6%A8%A1%E5%9D%97%E7%9A%84%E4%B8%B2%E5%8F%A3%E8%BD%AC%E6%8D%A2%E7%BA%BF%E5%A4%A7%E6%A6%829%E5%9D%97%E5%B7%A6%E5%8F%B3%E7%9A%84%E6%A0%B7%E5%AD%90%E3%80%82">https://blog.csdn.net/guomutian911/article/details/44001721，具体设备的购买可以到X宝和拼夕夕上自行选购，价格大概5-10元左右，可自行根据预算进行选购，笔者选择了CH340G模块的串口转换线大概9块左右的样子。</a></p>
+<p>CH340系列芯片的驱动可到官网进行下载：<a target="_blank" rel="noopener" href="http://www.wch.cn/downloads/CH341SER_EXE.html">http://www.wch.cn/downloads/CH341SER_EXE.html</a></p>
+<p>树莓派4B的串口线连接及相关设置可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37224534/article/details/106437958">https://blog.csdn.net/qq_37224534/article/details/106437958</a></p>
+<p>串口登录效果如下图所示</p>
+<p><img src="/blog/2021/01/31/RaspberryPi-Setup/serial_comm.jpg" alt="serial_comm" title="serial_comm"></p>
+<h1 id="8-性能测试"><a href="#8-性能测试" class="headerlink" title="8 性能测试"></a>8 性能测试</h1><p>使用sysbench工具可以对系统的CPU、内存读写、I&#x2F;O等性能进行测试</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">##安装sysbench</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> sysbench
+
+<span class="token comment">#命令参数</span>
+Usage:
+  sysbench <span class="token punctuation">[</span>general-options<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token parameter variable">--test</span><span class="token operator">=</span><span class="token operator">&lt;</span>test-name<span class="token operator">></span> <span class="token punctuation">[</span>test-options<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token builtin class-name">command</span>
+
+General options:
+  --num-threads<span class="token operator">=</span>N            number of threads to use <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+  --max-requests<span class="token operator">=</span>N           limit <span class="token keyword">for</span> total number of requests <span class="token punctuation">[</span><span class="token number">10000</span><span class="token punctuation">]</span>
+  --max-time<span class="token operator">=</span>N               limit <span class="token keyword">for</span> total execution <span class="token function">time</span> <span class="token keyword">in</span> seconds <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  --forced-shutdown<span class="token operator">=</span>STRING   amount of <span class="token function">time</span> to <span class="token function">wait</span> after --max-time before forcing <span class="token function">shutdown</span> <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  --thread-stack-size<span class="token operator">=</span>SIZE   size of stack per thread <span class="token punctuation">[</span>32K<span class="token punctuation">]</span>
+  --init-rng<span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>        initialize random number generator <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--test</span><span class="token operator">=</span>STRING              <span class="token builtin class-name">test</span> to run
+  <span class="token parameter variable">--debug</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>           print <span class="token function">more</span> debugging info <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--validate</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>        perform validation checks where possible <span class="token punctuation">[</span>off<span class="token punctuation">]</span>
+  <span class="token parameter variable">--help</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>            print <span class="token builtin class-name">help</span> and <span class="token builtin class-name">exit</span>
+  <span class="token parameter variable">--version</span><span class="token operator">=</span><span class="token punctuation">[</span>on<span class="token operator">|</span>off<span class="token punctuation">]</span>         print version and <span class="token builtin class-name">exit</span>
+
+Compiled-in tests:
+  fileio - File I/O <span class="token builtin class-name">test</span>
+  cpu - CPU performance <span class="token builtin class-name">test</span>
+  memory - Memory functions speed <span class="token builtin class-name">test</span>
+  threads - Threads subsystem performance <span class="token builtin class-name">test</span>
+  mutex - Mutex performance <span class="token builtin class-name">test</span>
+  oltp - OLTP <span class="token builtin class-name">test</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>[1]<a target="_blank" rel="noopener" href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">Setting up Your Raspberry Pi</a> 官网入门安装文档<br>[2]<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_4b_4p0_reduced.pdf">Schematics</a> 树莓派主板原理图<br>[3]<a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-595-1.html">树莓派系列教程2：树莓派烧写镜像</a><br>[4][新手入门]树莓派Raspberry 学习笔记2 散热片&amp;散热风扇&amp;外壳安装](<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42368268/article/details/100178652">https://blog.csdn.net/weixin_42368268/article/details/100178652</a>)<br>[5]<a target="_blank" rel="noopener" href="https://blog.csdn.net/chengyq116/article/details/86500026">vim安装失败</a><br>[6]<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/60e527149ce8">树莓派性能测试教程</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/RaspberryPi/" rel="tag"># RaspberryPi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2022/10/07/Using-Hexo-and-github-to-build-blog/" rel="next" title="使用Hexo+github pages搭建个人博客">
+                  使用Hexo+github pages搭建个人博客 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wayne</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">17k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">15 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/blog/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
